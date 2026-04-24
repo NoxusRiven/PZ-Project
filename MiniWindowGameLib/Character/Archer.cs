@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiniWindowGameLib
+namespace MiniWindowGameLib.Character
 {
     public class Archer : Character
     {
@@ -18,7 +15,12 @@ namespace MiniWindowGameLib
 
         public override void LevelUp()
         {
-            throw new NotImplementedException();
+            Level++;
+            MaxHp += 25;
+            Dexterity += 5;
+            Inteligence += 1;
+            Strength += 1;
+            MaxExp = (int)(MaxExp * 1.4);
         }
     }
 }

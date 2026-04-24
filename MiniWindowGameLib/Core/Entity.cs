@@ -1,22 +1,22 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace MiniWindowGameLib
+namespace MiniWindowGameLib.Core
 {
     public abstract class Entity
     {
         public string Name { get; set; }
         public int Level { get; set; }
 
-        
+
         public int MaxHp { get; set; }
         public int CurrentHp { get; set; }
 
         private int BaseDamage { get; set; }
         public int Strength { get; set; }
-        public int Dexterity {  get; set; }
-        public int Inteligence {  get; set; }
+        public int Dexterity { get; set; }
+        public int Inteligence { get; set; }
 
-        public int Reduction {  get; set; }
+        public int Reduction { get; set; }
 
         virtual public int Damage => (int)(BaseDamage * Level * 1.5);
         public bool IsAlive => CurrentHp > 0;
@@ -33,10 +33,10 @@ namespace MiniWindowGameLib
             Inteligence = inteligence;
             Reduction = reduction;
         }
-        
-        void TakeDamage(int damage)
+
+        public void TakeDamage(int damage)
         {
-            CurrentHp -= (int)(damage / Reduction);
+            CurrentHp -= damage / Reduction;
         }
     }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniWindowGameLib
+namespace MiniWindowGameLib.Character
 {
     public class Warrior : Character
     {
@@ -16,7 +16,12 @@ namespace MiniWindowGameLib
 
         public override void LevelUp()
         {
-            throw new NotImplementedException();
+            Level++;
+            MaxHp += 50;
+            Dexterity += 2;
+            Inteligence += 2;
+            Strength += 7;
+            MaxExp = (int)(MaxExp * 1.4);
         }
     }
 }

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MiniWindowGameLib.Core;
 
-namespace MiniWindowGameLib
+namespace MiniWindowGameLib.Character
 {
     public abstract class Character : Entity
     {
         public int MaxExp { get; set; }
-        public int CurrentExp {  get; set; }
+        public int CurrentExp { get; set; }
 
-        public Character(string name, int level, int maxHp, int baseDamage, int strength, int dexterity, int inteligence, int reduction, int maxExp): 
+        public List<Skill> SkillList { get; set; }
+
+        public Character(string name, int level, int maxHp, int baseDamage, int strength, int dexterity, int inteligence, int reduction, int maxExp) :
             base(name, level, maxHp, baseDamage, strength, dexterity, inteligence, reduction)
         {
             MaxExp = maxHp;
             CurrentExp = 0;
+
+            SkillList = new List<Skill>();
         }
 
         public abstract void LevelUp();
@@ -24,7 +24,7 @@ namespace MiniWindowGameLib
         {
             CurrentExp += exp;
 
-            if(CurrentExp >= MaxExp)
+            if (CurrentExp >= MaxExp)
             {
                 CurrentExp = CurrentExp - MaxExp;
                 LevelUp();
