@@ -2,7 +2,7 @@
 
 namespace MiniWindowGameLib.Core
 {
-    public delegate void SkillHandler(params Character.Character[] characters);
+    public delegate void SkillHandler(params Character.Character[] targets);
     
     public class Skill
     {

@@ -89,11 +89,11 @@ namespace MiniWindowGame
 
                 // boss fight
                 var dragon = new Dragon("Dragon1", 10, new Skill("Dragon Breath", 50));
-                dragon.SpecialAttack.OnUse += characters =>
+                dragon.SpecialAttack.OnUse += targets =>
                 {
-                    foreach (var c in characters)
+                    foreach (var target in targets)
                     {
-                        c.TakeDamage(dragon.Inteligence * 2);
+                        target.TakeDamage(dragon.Inteligence * 2);
                     }
                 };
 
