@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MiniWindowGameLib.Enemy
 {
-    public class Wolf : Entity
+    public class Wolf : Monster 
     {
-        public Wolf(string name, int level) : base(name, level, 100 + (level * 30), 15, 12 + (level * 5), 3, 3, 2)
+        public Wolf(string name, int level) : base(name, level, 100 + (level * 30), 15, 12 + (level * 5), 3, 3, 2, 120 * level, 70/2 * level)
         {
         }
     }

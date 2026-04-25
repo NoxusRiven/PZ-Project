@@ -6,6 +6,7 @@ namespace MiniWindowGameLib.Character
     {
         public int MaxExp { get; set; }
         public int CurrentExp { get; set; }
+        public int Gold { get; set; }
 
         public List<Skill> SkillList { get; set; }
 
