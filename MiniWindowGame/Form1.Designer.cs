@@ -40,6 +40,8 @@
             diffLbl = new Label();
             gamePanel = new Panel();
             mapPanel = new Panel();
+            travelBtn = new Button();
+            biomeDescPanel = new Panel();
             cavePanel = new Panel();
             caveLbl = new Label();
             mountainsPanel = new Panel();
@@ -51,8 +53,7 @@
             statsPanel = new Panel();
             characterList = new ListBox();
             partyLbl = new Label();
-            biomeDescPanel = new Panel();
-            travelBtn = new Button();
+            fightPanel = new Panel();
             startPanel.SuspendLayout();
             diffPanel.SuspendLayout();
             gamePanel.SuspendLayout();
@@ -193,6 +194,25 @@
             mapPanel.Size = new Size(752, 570);
             mapPanel.TabIndex = 3;
             // 
+            // travelBtn
+            // 
+            travelBtn.Location = new Point(347, 505);
+            travelBtn.Name = "travelBtn";
+            travelBtn.Size = new Size(94, 29);
+            travelBtn.TabIndex = 6;
+            travelBtn.Text = "Travel";
+            travelBtn.UseVisualStyleBackColor = true;
+            travelBtn.Click += travelBtn_Click;
+            // 
+            // biomeDescPanel
+            // 
+            biomeDescPanel.AutoScroll = true;
+            biomeDescPanel.BackColor = Color.White;
+            biomeDescPanel.Location = new Point(109, 252);
+            biomeDescPanel.Name = "biomeDescPanel";
+            biomeDescPanel.Size = new Size(566, 204);
+            biomeDescPanel.TabIndex = 5;
+            // 
             // cavePanel
             // 
             cavePanel.BackColor = Color.Gray;
@@ -202,6 +222,8 @@
             cavePanel.Name = "cavePanel";
             cavePanel.Size = new Size(176, 76);
             cavePanel.TabIndex = 4;
+            cavePanel.Tag = "biome:cave";
+            cavePanel.Click += biomePanel_Click;
             // 
             // caveLbl
             // 
@@ -220,6 +242,8 @@
             mountainsPanel.Name = "mountainsPanel";
             mountainsPanel.Size = new Size(162, 76);
             mountainsPanel.TabIndex = 3;
+            mountainsPanel.Tag = "biome:mountains";
+            mountainsPanel.Click += biomePanel_Click;
             // 
             // moutainsLbl
             // 
@@ -239,6 +263,8 @@
             forestPanel.Name = "forestPanel";
             forestPanel.Size = new Size(155, 76);
             forestPanel.TabIndex = 2;
+            forestPanel.Tag = "biome:forest";
+            forestPanel.Click += biomePanel_Click;
             // 
             // forestLbl
             // 
@@ -274,9 +300,9 @@
             // statsPanel
             // 
             statsPanel.BackColor = Color.White;
-            statsPanel.Location = new Point(23, 291);
+            statsPanel.Location = new Point(23, 228);
             statsPanel.Name = "statsPanel";
-            statsPanel.Size = new Size(229, 255);
+            statsPanel.Size = new Size(229, 318);
             statsPanel.TabIndex = 3;
             // 
             // characterList
@@ -284,8 +310,9 @@
             characterList.FormattingEnabled = true;
             characterList.Location = new Point(23, 60);
             characterList.Name = "characterList";
-            characterList.Size = new Size(229, 204);
+            characterList.Size = new Size(229, 144);
             characterList.TabIndex = 2;
+            characterList.SelectedIndexChanged += characterList_SelectedIndexChanged;
             // 
             // partyLbl
             // 
@@ -297,28 +324,20 @@
             partyLbl.TabIndex = 0;
             partyLbl.Text = "Party";
             // 
-            // biomeDescPanel
+            // fightPanel
             // 
-            biomeDescPanel.BackColor = Color.White;
-            biomeDescPanel.Location = new Point(109, 252);
-            biomeDescPanel.Name = "biomeDescPanel";
-            biomeDescPanel.Size = new Size(566, 204);
-            biomeDescPanel.TabIndex = 5;
-            // 
-            // travelBtn
-            // 
-            travelBtn.Location = new Point(347, 505);
-            travelBtn.Name = "travelBtn";
-            travelBtn.Size = new Size(94, 29);
-            travelBtn.TabIndex = 6;
-            travelBtn.Text = "Travel";
-            travelBtn.UseVisualStyleBackColor = true;
+            fightPanel.Dock = DockStyle.Fill;
+            fightPanel.Location = new Point(0, 0);
+            fightPanel.Name = "fightPanel";
+            fightPanel.Size = new Size(1099, 618);
+            fightPanel.TabIndex = 7;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1099, 618);
+            Controls.Add(fightPanel);
             Controls.Add(gamePanel);
             Controls.Add(startPanel);
             Controls.Add(diffPanel);
@@ -344,10 +363,23 @@
 
         #endregion
 
-        void SwapPanels(Panel toShow, Panel toHide)
+        private void SwapPanels(Panel toShow, Panel toHide)
         {
             toShow.Visible = true;
             toHide.Visible = false;
+        }
+
+        private Panel GetTaggedPanel(Control ctrl)
+        {
+            while (ctrl != null)
+            {
+                if (ctrl is Panel p && p.Tag != null)
+                    return p;
+
+                ctrl = ctrl.Parent;
+            }
+
+            return null;
         }
 
         private Panel startPanel;
@@ -375,5 +407,6 @@
         private Label caveLbl;
         private Button travelBtn;
         private Panel biomeDescPanel;
+        private Panel fightPanel;
     }
 }

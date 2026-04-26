@@ -11,13 +11,14 @@ namespace MiniWindowGameLib.Core
         public int MaxHp { get; set; }
         public int CurrentHp { get; set; }
 
-        private int BaseDamage { get; set; }
+        public int BaseDamage { get; set; }
         public int Strength { get; set; }
         public int Dexterity { get; set; }
         public int Inteligence { get; set; }
 
-        public int Reduction { get; set; }
+        public int BaseResistance { get; set; }
 
+        public virtual int Resistance => BaseResistance;
         virtual public int Damage => (int)(BaseDamage * Level * 1.5);
         public bool IsAlive => CurrentHp > 0;
 
@@ -31,12 +32,12 @@ namespace MiniWindowGameLib.Core
             Strength = strength;
             Dexterity = dexterity;
             Inteligence = inteligence;
-            Reduction = reduction;
+            BaseResistance = reduction;
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
-            CurrentHp -= damage / Reduction;
+            CurrentHp -= damage / BaseResistance;
         }
     }
 
