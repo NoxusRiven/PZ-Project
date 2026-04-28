@@ -1,4 +1,6 @@
-﻿namespace MiniWindowGame
+﻿using Microsoft.VisualBasic.Logging;
+
+namespace MiniWindowGame
 {
     partial class Form1
     {
@@ -45,7 +47,7 @@
             cavePanel = new Panel();
             caveLbl = new Label();
             mountainsPanel = new Panel();
-            moutainsLbl = new Label();
+            mountainsLbl = new Label();
             forestPanel = new Panel();
             forestLbl = new Label();
             mapLbl = new Label();
@@ -54,6 +56,11 @@
             characterList = new ListBox();
             partyLbl = new Label();
             fightPanel = new Panel();
+            enemyPanel = new Panel();
+            fightCharacterList = new ListBox();
+            controlPanel = new Panel();
+            actionPanel = new Panel();
+            logPanel = new Panel();
             startPanel.SuspendLayout();
             diffPanel.SuspendLayout();
             gamePanel.SuspendLayout();
@@ -62,6 +69,8 @@
             mountainsPanel.SuspendLayout();
             forestPanel.SuspendLayout();
             partyPanel.SuspendLayout();
+            fightPanel.SuspendLayout();
+            controlPanel.SuspendLayout();
             SuspendLayout();
             // 
             // startPanel
@@ -232,12 +241,14 @@
             caveLbl.Name = "caveLbl";
             caveLbl.Size = new Size(72, 29);
             caveLbl.TabIndex = 0;
+            caveLbl.Tag = "";
             caveLbl.Text = "Cave";
+            caveLbl.Click += biomePanel_Click;
             // 
             // mountainsPanel
             // 
             mountainsPanel.BackColor = Color.FromArgb(161, 157, 138);
-            mountainsPanel.Controls.Add(moutainsLbl);
+            mountainsPanel.Controls.Add(mountainsLbl);
             mountainsPanel.Location = new Point(311, 100);
             mountainsPanel.Name = "mountainsPanel";
             mountainsPanel.Size = new Size(162, 76);
@@ -245,15 +256,17 @@
             mountainsPanel.Tag = "biome:mountains";
             mountainsPanel.Click += biomePanel_Click;
             // 
-            // moutainsLbl
+            // mountainsLbl
             // 
-            moutainsLbl.AutoSize = true;
-            moutainsLbl.Font = new Font("Microsoft Sans Serif", 15F);
-            moutainsLbl.Location = new Point(21, 22);
-            moutainsLbl.Name = "moutainsLbl";
-            moutainsLbl.Size = new Size(130, 29);
-            moutainsLbl.TabIndex = 0;
-            moutainsLbl.Text = "Mountains";
+            mountainsLbl.AutoSize = true;
+            mountainsLbl.Font = new Font("Microsoft Sans Serif", 15F);
+            mountainsLbl.Location = new Point(21, 22);
+            mountainsLbl.Name = "mountainsLbl";
+            mountainsLbl.Size = new Size(130, 29);
+            mountainsLbl.TabIndex = 0;
+            mountainsLbl.Tag = "";
+            mountainsLbl.Text = "Mountains";
+            mountainsLbl.Click += biomePanel_Click;
             // 
             // forestPanel
             // 
@@ -274,7 +287,9 @@
             forestLbl.Name = "forestLbl";
             forestLbl.Size = new Size(83, 35);
             forestLbl.TabIndex = 0;
+            forestLbl.Tag = "";
             forestLbl.Text = "Forest";
+            forestLbl.Click += biomePanel_Click;
             // 
             // mapLbl
             // 
@@ -326,19 +341,64 @@
             // 
             // fightPanel
             // 
+            fightPanel.Controls.Add(enemyPanel);
+            fightPanel.Controls.Add(fightCharacterList);
+            fightPanel.Controls.Add(controlPanel);
             fightPanel.Dock = DockStyle.Fill;
             fightPanel.Location = new Point(0, 0);
             fightPanel.Name = "fightPanel";
             fightPanel.Size = new Size(1099, 618);
             fightPanel.TabIndex = 7;
             // 
+            // enemyPanel
+            // 
+            enemyPanel.BackColor = SystemColors.ButtonHighlight;
+            enemyPanel.Location = new Point(256, 43);
+            enemyPanel.Name = "enemyPanel";
+            enemyPanel.Size = new Size(794, 282);
+            enemyPanel.TabIndex = 3;
+            // 
+            // fightCharacterList
+            // 
+            fightCharacterList.FormattingEnabled = true;
+            fightCharacterList.Location = new Point(26, 43);
+            fightCharacterList.Name = "fightCharacterList";
+            fightCharacterList.Size = new Size(173, 544);
+            fightCharacterList.TabIndex = 2;
+            // 
+            // controlPanel
+            // 
+            controlPanel.BackColor = SystemColors.ControlDark;
+            controlPanel.Controls.Add(actionPanel);
+            controlPanel.Controls.Add(logPanel);
+            controlPanel.Location = new Point(256, 379);
+            controlPanel.Name = "controlPanel";
+            controlPanel.Size = new Size(794, 208);
+            controlPanel.TabIndex = 1;
+            // 
+            // actionPanel
+            // 
+            actionPanel.BackColor = SystemColors.ButtonHighlight;
+            actionPanel.Location = new Point(21, 17);
+            actionPanel.Name = "actionPanel";
+            actionPanel.Size = new Size(427, 175);
+            actionPanel.TabIndex = 1;
+            // 
+            // logPanel
+            // 
+            logPanel.BackColor = SystemColors.Desktop;
+            logPanel.Location = new Point(485, 16);
+            logPanel.Name = "logPanel";
+            logPanel.Size = new Size(286, 176);
+            logPanel.TabIndex = 0;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1099, 618);
-            Controls.Add(fightPanel);
             Controls.Add(gamePanel);
+            Controls.Add(fightPanel);
             Controls.Add(startPanel);
             Controls.Add(diffPanel);
             Name = "Form1";
@@ -358,6 +418,8 @@
             forestPanel.PerformLayout();
             partyPanel.ResumeLayout(false);
             partyPanel.PerformLayout();
+            fightPanel.ResumeLayout(false);
+            controlPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -369,12 +431,13 @@
             toHide.Visible = false;
         }
 
-        private Panel GetTaggedPanel(Control ctrl)
+        private Control GetTaggedRoot(Control ctrl)
         {
             while (ctrl != null)
             {
-                if (ctrl is Panel p && p.Tag != null)
-                    return p;
+                if (ctrl.Tag != null && ctrl.Tag.ToString().Length != 0)
+                    return ctrl;
+
 
                 ctrl = ctrl.Parent;
             }
@@ -402,11 +465,16 @@
         private Panel forestPanel;
         private Label forestLbl;
         private Panel mountainsPanel;
-        private Label moutainsLbl;
+        private Label mountainsLbl;
         private Panel cavePanel;
         private Label caveLbl;
         private Button travelBtn;
         private Panel biomeDescPanel;
         private Panel fightPanel;
+        private Panel controlPanel;
+        private ListBox fightCharacterList;
+        private Panel logPanel;
+        private Panel actionPanel;
+        private Panel enemyPanel;
     }
 }

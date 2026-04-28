@@ -318,11 +318,13 @@ namespace MiniWindowGame
         {
             Control? clicked = sender as Control;
             if (clicked == null)
-            {
                 return;
-            }
+            
 
-            Panel biomePanel = GetTaggedPanel(clicked);
+            Panel? biomePanel = GetTaggedRoot(clicked) as Panel ?? null;
+            if (biomePanel == null)
+                return;
+
 
             string? tagStr = biomePanel.Tag?.ToString();
             if (tagStr == null || !tagStr.StartsWith("biome:"))
@@ -353,7 +355,7 @@ namespace MiniWindowGame
 
         private void travelBtn_Click(object sender, EventArgs e)
         {
-            if(selectedBiome == null)
+            if (selectedBiome == null)
             {
                 MessageBox.Show("Select a biome to travel to.");
                 return;
@@ -369,6 +371,19 @@ namespace MiniWindowGame
         private void TravelTo(Biome biome)
         {
             SwapPanels(fightPanel, gamePanel);
+
+            StartFight(biome);
+        }
+
+        private void StartFight(Biome biome)
+        {
+
+            SetupEnemy();
+        }
+
+        private void SetupEnemy()
+        {
+
         }
     }
 }
