@@ -15,6 +15,12 @@ namespace MiniWindowGameLib.Character
         public Warrior(string name) :
             base(name, 1, 150, 20, 10, 5, 5, 18, 8, 100)
         {
+            InitSkills();
+        }
+
+        
+        public override void InitSkills()
+        {
             var rage = new Skill("Spartan rage", 20);
             rage.OnUse += (targets) =>
             {

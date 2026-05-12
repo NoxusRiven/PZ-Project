@@ -12,15 +12,20 @@ namespace MiniWindowGameLib.Character
             Math.Min(base.Resistance + (Strength + Dexterity)/10, MaxResistance);
 
         public Mage(string name) :
-            base(name, 1, 90, 20, 3, 3, 25, 10, 3, 100)
+            base(name, 1, 90, 20, 3, 3, 200, 10, 3, 100)
         {
             MaxMana = 150;
             CurrentMana = MaxMana;
 
+            InitSkills(); 
+        }
+
+        public override void InitSkills()
+        {
             var fireBall = new Skill("Fireball", 30);
             fireBall.OnUse += (targets) =>
             {
-                if(CurrentMana >= fireBall.Cost)
+                if (CurrentMana >= fireBall.Cost)
                     CurrentMana -= fireBall.Cost;
                 else
                 {

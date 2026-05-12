@@ -37,7 +37,7 @@ namespace MiniWindowGameLib.Core
 
         public virtual void TakeDamage(int damage)
         {
-            CurrentHp -= damage / BaseResistance;
+            CurrentHp = Math.Max(CurrentHp - damage / BaseResistance, 0);
         }
     }
 

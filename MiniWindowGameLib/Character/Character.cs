@@ -1,9 +1,15 @@
 ﻿using MiniWindowGameLib.Core;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MiniWindowGameLib.Character
 {
-    //TODO: later maybe also add min resitance
+    //TODO: later maybe also add min resitance,
+
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Warrior), "warrior")]
+    [JsonDerivedType(typeof(Mage), "mage")]
+    [JsonDerivedType(typeof(Archer), "archer")]
     public abstract class Character : Entity
     {
         public int MaxResistance { get; set; }
@@ -11,6 +17,7 @@ namespace MiniWindowGameLib.Character
         public int CurrentExp { get; set; }
         public int Gold { get; set; }
 
+        [JsonIgnore]
         public List<Skill> SkillList { get; set; }
 
 
@@ -33,10 +40,15 @@ namespace MiniWindowGameLib.Character
 
             if (CurrentExp >= MaxExp)
             {
-                CurrentExp = CurrentExp - MaxExp;
-                LevelUp();
+                while(CurrentExp >= MaxExp)
+                {
+                    CurrentExp -= MaxExp;
+                    LevelUp();
+                }
             }
         }
+
+        public abstract void InitSkills();
 
         public override string ToString()
         {

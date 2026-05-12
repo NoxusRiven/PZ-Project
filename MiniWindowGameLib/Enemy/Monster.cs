@@ -15,7 +15,10 @@ namespace MiniWindowGameLib.Enemy
 
         public Monster(string name, int level, int maxHP, int baseDmg, int str, int dex, int _int, int resist, int exp, int gold) : 
             base(name, level, maxHP, baseDmg, str, dex, _int, resist)
-        { }
+        {
+            ExperienceReward = exp;
+            GoldReward = gold;
+        }
 
         public override string ToString()
         {

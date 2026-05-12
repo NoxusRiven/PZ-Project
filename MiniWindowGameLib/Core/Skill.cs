@@ -25,7 +25,12 @@ namespace MiniWindowGameLib.Core
 
         public override string ToString()
         {
-            return $"{Name} (Mana Cost: {Cost})";
+            return $"{Name} (Cost: {Cost}) (Dur: {TurnDuration})";
+        }
+
+        public string ToDisplay()
+        {
+            return $"Cost: {Cost} Dur: {TurnDuration}";
         }
 
     }

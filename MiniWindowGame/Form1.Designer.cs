@@ -31,6 +31,7 @@ namespace MiniWindowGame
         private void InitializeComponent()
         {
             startPanel = new Panel();
+            loadSaveBtn = new Button();
             exitBtn = new Button();
             startBtn = new Button();
             gameNameLbl = new Label();
@@ -59,8 +60,18 @@ namespace MiniWindowGame
             enemyPanel = new Panel();
             fightCharacterList = new ListBox();
             controlPanel = new Panel();
+            fightBtn = new Button();
+            characterViewPanel = new Panel();
+            skillPanel = new Panel();
+            skillList = new ListBox();
+            skillDescPanel = new Panel();
+            infoPanel = new Panel();
             actionPanel = new Panel();
+            attackBtn = new Button();
+            useItemBtn = new Button();
+            useSkillBtn = new Button();
             logPanel = new Panel();
+            saveProgressBtn = new Button();
             startPanel.SuspendLayout();
             diffPanel.SuspendLayout();
             gamePanel.SuspendLayout();
@@ -71,10 +82,14 @@ namespace MiniWindowGame
             partyPanel.SuspendLayout();
             fightPanel.SuspendLayout();
             controlPanel.SuspendLayout();
+            characterViewPanel.SuspendLayout();
+            skillPanel.SuspendLayout();
+            actionPanel.SuspendLayout();
             SuspendLayout();
             // 
             // startPanel
             // 
+            startPanel.Controls.Add(loadSaveBtn);
             startPanel.Controls.Add(exitBtn);
             startPanel.Controls.Add(startBtn);
             startPanel.Controls.Add(gameNameLbl);
@@ -84,9 +99,19 @@ namespace MiniWindowGame
             startPanel.Size = new Size(1099, 618);
             startPanel.TabIndex = 0;
             // 
+            // loadSaveBtn
+            // 
+            loadSaveBtn.Location = new Point(407, 335);
+            loadSaveBtn.Name = "loadSaveBtn";
+            loadSaveBtn.Size = new Size(302, 61);
+            loadSaveBtn.TabIndex = 3;
+            loadSaveBtn.Text = "Load Save";
+            loadSaveBtn.UseVisualStyleBackColor = true;
+            loadSaveBtn.Click += loadSaveBtn_Click;
+            // 
             // exitBtn
             // 
-            exitBtn.Location = new Point(407, 416);
+            exitBtn.Location = new Point(407, 441);
             exitBtn.Name = "exitBtn";
             exitBtn.Size = new Size(302, 65);
             exitBtn.TabIndex = 2;
@@ -304,6 +329,7 @@ namespace MiniWindowGame
             // partyPanel
             // 
             partyPanel.BackColor = Color.FromArgb(200, 200, 200);
+            partyPanel.Controls.Add(saveProgressBtn);
             partyPanel.Controls.Add(statsPanel);
             partyPanel.Controls.Add(characterList);
             partyPanel.Controls.Add(partyLbl);
@@ -317,7 +343,7 @@ namespace MiniWindowGame
             statsPanel.BackColor = Color.White;
             statsPanel.Location = new Point(23, 228);
             statsPanel.Name = "statsPanel";
-            statsPanel.Size = new Size(229, 318);
+            statsPanel.Size = new Size(229, 298);
             statsPanel.TabIndex = 3;
             // 
             // characterList
@@ -355,42 +381,146 @@ namespace MiniWindowGame
             enemyPanel.BackColor = SystemColors.ButtonHighlight;
             enemyPanel.Location = new Point(256, 43);
             enemyPanel.Name = "enemyPanel";
-            enemyPanel.Size = new Size(794, 282);
+            enemyPanel.Size = new Size(794, 261);
             enemyPanel.TabIndex = 3;
             // 
             // fightCharacterList
             // 
+            fightCharacterList.DrawMode = DrawMode.OwnerDrawFixed;
             fightCharacterList.FormattingEnabled = true;
+            fightCharacterList.ItemHeight = 40;
             fightCharacterList.Location = new Point(26, 43);
             fightCharacterList.Name = "fightCharacterList";
-            fightCharacterList.Size = new Size(173, 544);
+            fightCharacterList.Size = new Size(173, 524);
             fightCharacterList.TabIndex = 2;
+            fightCharacterList.DrawItem += fightCharacterList_DrawItem;
+            fightCharacterList.SelectedIndexChanged += fightCharacterList_SelectedIndexChanged;
             // 
             // controlPanel
             // 
             controlPanel.BackColor = SystemColors.ControlDark;
-            controlPanel.Controls.Add(actionPanel);
+            controlPanel.Controls.Add(fightBtn);
+            controlPanel.Controls.Add(characterViewPanel);
             controlPanel.Controls.Add(logPanel);
-            controlPanel.Location = new Point(256, 379);
+            controlPanel.Location = new Point(256, 331);
             controlPanel.Name = "controlPanel";
-            controlPanel.Size = new Size(794, 208);
+            controlPanel.Size = new Size(794, 256);
             controlPanel.TabIndex = 1;
+            // 
+            // fightBtn
+            // 
+            fightBtn.Location = new Point(370, 13);
+            fightBtn.Name = "fightBtn";
+            fightBtn.Size = new Size(94, 29);
+            fightBtn.TabIndex = 2;
+            fightBtn.Text = "Fight";
+            fightBtn.UseVisualStyleBackColor = true;
+            fightBtn.Click += fightBtn_Click;
+            // 
+            // characterViewPanel
+            // 
+            characterViewPanel.BackColor = SystemColors.ButtonHighlight;
+            characterViewPanel.Controls.Add(skillPanel);
+            characterViewPanel.Controls.Add(infoPanel);
+            characterViewPanel.Controls.Add(actionPanel);
+            characterViewPanel.Location = new Point(36, 65);
+            characterViewPanel.Name = "characterViewPanel";
+            characterViewPanel.Size = new Size(386, 175);
+            characterViewPanel.TabIndex = 1;
+            // 
+            // skillPanel
+            // 
+            skillPanel.BackColor = SystemColors.ButtonHighlight;
+            skillPanel.Controls.Add(skillList);
+            skillPanel.Controls.Add(skillDescPanel);
+            skillPanel.Location = new Point(190, 0);
+            skillPanel.Name = "skillPanel";
+            skillPanel.Size = new Size(193, 175);
+            skillPanel.TabIndex = 3;
+            skillPanel.Visible = false;
+            // 
+            // skillList
+            // 
+            skillList.FormattingEnabled = true;
+            skillList.Location = new Point(8, 6);
+            skillList.Name = "skillList";
+            skillList.Size = new Size(182, 104);
+            skillList.TabIndex = 1;
+            skillList.SelectedIndexChanged += skillList_SelectedIndexChanged;
+            // 
+            // skillDescPanel
+            // 
+            skillDescPanel.Location = new Point(8, 126);
+            skillDescPanel.Name = "skillDescPanel";
+            skillDescPanel.Size = new Size(182, 42);
+            skillDescPanel.TabIndex = 0;
+            // 
+            // infoPanel
+            // 
+            infoPanel.Location = new Point(0, 0);
+            infoPanel.Name = "infoPanel";
+            infoPanel.Size = new Size(193, 175);
+            infoPanel.TabIndex = 4;
             // 
             // actionPanel
             // 
             actionPanel.BackColor = SystemColors.ButtonHighlight;
-            actionPanel.Location = new Point(21, 17);
+            actionPanel.Controls.Add(attackBtn);
+            actionPanel.Controls.Add(useItemBtn);
+            actionPanel.Controls.Add(useSkillBtn);
+            actionPanel.Location = new Point(190, 0);
             actionPanel.Name = "actionPanel";
-            actionPanel.Size = new Size(427, 175);
-            actionPanel.TabIndex = 1;
+            actionPanel.Size = new Size(196, 175);
+            actionPanel.TabIndex = 3;
+            actionPanel.Visible = false;
+            // 
+            // attackBtn
+            // 
+            attackBtn.Location = new Point(61, 20);
+            attackBtn.Name = "attackBtn";
+            attackBtn.Size = new Size(94, 29);
+            attackBtn.TabIndex = 0;
+            attackBtn.Text = "Attack";
+            attackBtn.UseVisualStyleBackColor = true;
+            attackBtn.Click += attackBtn_Click;
+            // 
+            // useItemBtn
+            // 
+            useItemBtn.Location = new Point(61, 126);
+            useItemBtn.Name = "useItemBtn";
+            useItemBtn.Size = new Size(94, 29);
+            useItemBtn.TabIndex = 2;
+            useItemBtn.Text = "Use Item";
+            useItemBtn.UseVisualStyleBackColor = true;
+            useItemBtn.Click += useItemBtn_Click;
+            // 
+            // useSkillBtn
+            // 
+            useSkillBtn.Location = new Point(61, 75);
+            useSkillBtn.Name = "useSkillBtn";
+            useSkillBtn.Size = new Size(94, 29);
+            useSkillBtn.TabIndex = 1;
+            useSkillBtn.Text = "Use Skill";
+            useSkillBtn.UseVisualStyleBackColor = true;
+            useSkillBtn.Click += useSkillBtn_Click;
             // 
             // logPanel
             // 
             logPanel.BackColor = SystemColors.Desktop;
-            logPanel.Location = new Point(485, 16);
+            logPanel.Location = new Point(485, 64);
             logPanel.Name = "logPanel";
             logPanel.Size = new Size(286, 176);
             logPanel.TabIndex = 0;
+            // 
+            // saveProgressBtn
+            // 
+            saveProgressBtn.Location = new Point(69, 532);
+            saveProgressBtn.Name = "saveProgressBtn";
+            saveProgressBtn.Size = new Size(140, 30);
+            saveProgressBtn.TabIndex = 4;
+            saveProgressBtn.Text = "Save Progress";
+            saveProgressBtn.UseVisualStyleBackColor = true;
+            saveProgressBtn.Click += saveProgressBtn_Click;
             // 
             // Form1
             // 
@@ -420,6 +550,9 @@ namespace MiniWindowGame
             partyPanel.PerformLayout();
             fightPanel.ResumeLayout(false);
             controlPanel.ResumeLayout(false);
+            characterViewPanel.ResumeLayout(false);
+            skillPanel.ResumeLayout(false);
+            actionPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -429,6 +562,8 @@ namespace MiniWindowGame
         {
             toShow.Visible = true;
             toHide.Visible = false;
+
+            toShow.BringToFront();
         }
 
         private Control GetTaggedRoot(Control ctrl)
@@ -444,6 +579,8 @@ namespace MiniWindowGame
 
             return null;
         }
+        
+
 
         private Panel startPanel;
         private Button exitBtn;
@@ -474,7 +611,18 @@ namespace MiniWindowGame
         private Panel controlPanel;
         private ListBox fightCharacterList;
         private Panel logPanel;
-        private Panel actionPanel;
+        private Panel characterViewPanel;
         private Panel enemyPanel;
+        private Button useItemBtn;
+        private Button useSkillBtn;
+        private Button attackBtn;
+        private Panel skillPanel;
+        private Button fightBtn;
+        private ListBox skillList;
+        private Panel skillDescPanel;
+        private Panel actionPanel;
+        private Panel infoPanel;
+        private Button loadSaveBtn;
+        private Button saveProgressBtn;
     }
 }

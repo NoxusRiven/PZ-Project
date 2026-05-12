@@ -4,20 +4,24 @@ namespace MiniWindowGameLib.Character
 {
     public class Archer : Character
     {
-        private const int skillUsageCount = 3;
-
         public int Luck { get; set; }
         public int SkillsLeft { get; set; }
         public override int Damage => base.Damage + (int)(Dexterity * 1.25);
         public override int Resistance => Math.Min(base.Resistance + (Inteligence + Strength)/8, MaxResistance);
+        public int SkillUsageCount => 3;
 
         public Archer(string name) :
             base(name, 1, 100, 20, 5, 10, 5, 12, 5, 100)
         {
             Luck = 15;
-            SkillsLeft = skillUsageCount;
+            SkillsLeft = SkillUsageCount;
 
-            var arrowStorm = new Skill("Arrow storm", 1);
+            InitSkills();
+        }
+
+        public override void InitSkills()
+        {
+           var arrowStorm = new Skill("Arrow storm", 1);
             arrowStorm.OnUse += (targets) =>
             {
                 if (SkillsLeft > 0)
@@ -38,6 +42,7 @@ namespace MiniWindowGameLib.Character
                 }                
             };
 
+            SkillList.Add(arrowStorm);
         }
 
         public bool GotLucky()
@@ -56,7 +61,7 @@ namespace MiniWindowGameLib.Character
 
         public void ResetSkillUsage()
         {
-            SkillsLeft = skillUsageCount;
+            SkillsLeft = SkillUsageCount;
         }
 
         public override void TakeDamage(int damage)
@@ -85,7 +90,7 @@ namespace MiniWindowGameLib.Character
                     base.ToString() +
                     "Class stats:\n" + 
                     $"Luck: {Luck}\n" +
-                    $"Skill usage count: {skillUsageCount}\n";
+                    $"Skill usage count: {SkillUsageCount}\n";
         }
 
     }
