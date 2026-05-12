@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MiniWindowGameLib.Character.Archer" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgASAAAAAAAAEAAAAAABBAAgAAACgQAAAgAAIAAA=</HashCode>
+      <FileName>Character\Archer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Character.Character" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAGAAAAAAABAAEBAAAASAAAAAABAAE=</HashCode>
+      <FileName>Character\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Character.Mage" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEAAAAAAABAAAAAAAgQAAAAAAIIAA=</HashCode>
+      <FileName>Character\Mage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Character.Warrior" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEAAAAAAABAAAAAAAAQAAAAAAIAAA=</HashCode>
+      <FileName>Character\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.Biome" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Biome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.Entity" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABCAAAAAAAAAAIABAAQACABAAAIBAAAAgAAIAAA=</HashCode>
+      <FileName>Core\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.Formater" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Formater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.SaveState" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Core\SaveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.Skill" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAAAAAQAAABEAAAAABQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Skill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.SkillExtensions" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgACAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Core\Skill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Core.TurnAction" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAQQAAAAAACAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Core\TurnAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Boss" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Dragon" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Dragon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Goblin" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Goblin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Monster" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAEAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Monster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Orc" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Orc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Troll" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Troll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Enemy.Wolf" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Wolf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniWindowGameLib.Exception.NullCharacterException" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\NullCharacterException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MiniWindowGameLib.Core.BiomeType" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Biome.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MiniWindowGameLib.Core.Difficulty" Collapsed="true">
+    <Position X="22.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
+      <FileName>Core\SaveState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MiniWindowGameLib.Core.BuffType" Collapsed="true">
+    <Position X="20.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Core\Skill.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="MiniWindowGameLib.Core.SkillHandler" Collapsed="true">
+    <Position X="18.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Skill.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
